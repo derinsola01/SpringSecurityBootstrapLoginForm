@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -19,6 +20,28 @@
 		<hr>
 		
 		<p>Welcome to Derin's Playground for APPs</p>
+		
+		<hr>
+		
+		<p>
+			User: <security:authentication property="principal.username"/>
+			<br><br>
+			Role(s): <security:authentication property="principal.authorities"/>
+		</p>
+		
+		<hr>
+		
+		<p>
+			<a href="${ pageContext.request.contextPath }/leaders">Leadership Meeting</a> Only for Managers
+		</p>
+		
+		<hr>
+		
+		<p>
+			<a href="${ pageContext.request.contextPath }/systems">IT Meeting</a> Only for Administrators
+		</p>
+		
+		<hr>
 		
 		<form:form 	action="${ pageContext.request.contextPath }/logout" 
 					method="POST">
